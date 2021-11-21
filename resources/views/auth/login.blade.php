@@ -40,8 +40,8 @@
                 </div>
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
             </form><!-- /form -->
-            <a href="#" class="forgot-password">
-                Forgot the password?
+            <a href="{{ route('register') }}" class="forgot-password">
+                Register
             </a>
         </div><!-- /card-container -->
     </div><!-- /container -->

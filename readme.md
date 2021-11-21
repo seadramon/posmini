@@ -14,8 +14,8 @@ docker-compose exec phpfpm php artisan migrate
 or in windows
 ```
 winpty docker-compose exec phpfpm php artisan migrate
+
+#Akses Halaman Admin
 ```
-then run the user table seeder : 
-```
-docker-compose exec phpfpm php artisan db:seed --class=UserSeeder
+http://posmini.test/admin
 ```
