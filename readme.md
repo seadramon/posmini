@@ -11,11 +11,12 @@ migrate the tables:
 ```
 docker-compose exec phpfpm php artisan migrate
 ```
-or in windows
+or in windows : 
 ```
 winpty docker-compose exec phpfpm php artisan migrate
+```
 
-#Akses Halaman Admin
+# Akses Halaman Admin
 ```
 http://posmini.test/admin
 ```
