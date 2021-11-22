@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Kategori Produk - Majoo Indonesia')
+@section('title', 'Form Produk - Majoo Indonesia')
 
-@section('panel-heading', 'Kategori Produk')
+@section('panel-heading', 'Form Produk')
 
 @section('css')
 <link href="{{ asset('css/select2.css') }}" rel="stylesheet" />

@@ -13,6 +13,7 @@ use Validator;
 
 class KategoriController extends Controller
 {
+
     public function index()
     {
     	$data = Kategori::paginate(10);

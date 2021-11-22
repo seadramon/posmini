@@ -107,6 +107,6 @@ class ProdukController extends Controller
             Session::flash('error', 'Data gagal dihapus.');
 	    }
 
-	    return redirect()->route('produk-index');
+	    return redirect()->route('produk.index');
     }
 }

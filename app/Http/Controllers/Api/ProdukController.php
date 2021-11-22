@@ -9,6 +9,11 @@ use App\Http\Resources\Produk as ProdukResource;
 
 class ProdukController extends Controller
 {
+	/**
+     * query produk data.
+     *
+     * @return json
+     */
     public function index(Request $request)
     {
     	$data = Produk::get();
