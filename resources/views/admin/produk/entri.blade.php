@@ -21,6 +21,11 @@
 		        </div>
 			@endforeach
 		@endif
+
+		<div class="alert alert-success alert-styled-right alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+            Data Berhasil disimpan
+        </div>
 	    <!-- ./notifikasi -->
 
 		@if (isset($data))
@@ -66,12 +71,10 @@
 		            {!! Form::file("gambar", ['class'=>'form-control', 'id' => 'gambar']) !!}
 		        </div>
 		    </div>
-		    <!-- Progress bar -->
-			<div class="progress">
-			    <div class="progress-bar"></div>
-			</div>
-			<!-- Display upload status -->
-			<div id="uploadStatus"></div>
+		    <div class="progress">
+                <div class="bar"></div >
+                <div class="percent">0%</div >
+            </div>
 
 		    <div class="form-group row">
 		    	<div class="col-lg-12 text-right">
@@ -87,18 +90,48 @@
 @endsection
 
 @section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
 <script src="{{ asset('js/select2.js') }}"></script>
 <script src="{{ asset('js/summernote.min.js') }}"></script>
 <script type="text/javascript">
-	$(document).ready(function () {
+$(document).ready(function () {
+	$(".alert-success").hide();
 
-		$(".select2").select2();
+	$(".select2").select2();
 
-		$('.summernote').summernote();
+	$('.summernote').summernote();
 
-		$("#produkform").submit(function(event) {
-			console.log('test submit');
+	(function() {
+		var bar = $('.bar');
+		var percent = $('.percent');
+		var status = $('#status');
+
+		$('form').ajaxForm({
+		    beforeSend: function() {
+		        status.empty();
+		        var percentVal = '0%';
+		        var posterValue = $('input[name=gambar]').fieldValue();
+		        bar.width(percentVal)
+		        percent.html(percentVal);
+		    },
+		    uploadProgress: function(event, position, total, percentComplete) {
+		        var percentVal = percentComplete + '%';
+		        bar.width(percentVal)
+		        percent.html(percentVal);
+		    },
+		    success: function() {
+		        var percentVal = 'Wait, Saving';
+		        bar.width(percentVal)
+		        percent.html(percentVal);
+		    },
+		    complete: function(xhr) {
+		        status.html(xhr.responseText);
+		        alert('Data berhasil disimpan');
+		        $(".alert-success").show();
+		        window.location.href = "/admin/produk";
+		    }
 		});
-	});
+    })();
+});
 </script>
 @endsection
