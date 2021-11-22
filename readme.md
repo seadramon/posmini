@@ -5,7 +5,7 @@ docker-compose up -d
 ```
 and setting hosts file 127.0.0.1 to posmini.test.
 
-#Eksekusi table via migration
+# Eksekusi table via migration
 
 migrate the tables:
 ```
